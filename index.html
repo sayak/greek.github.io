@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Greek</title>
+		
+		<style type="text/css" media="screen">
+		
+			.ring
+			{
+				display: inline-block;
+				width: 100px;
+				height: 50px;
+				background: red;
+				border-radius: 100px / 50px;
+				
+				transition-duration: 0.5s;
+				
+			}
+			
+			.ring:target 
+			{
+				width: 150px;
+				height: 75px;
+			}	
+		</style>
+		
+		<script>
+			var audio;
+			
+			function play(url) 
+			{
+				if (audio) 
+					audio.pause(); 
+				
+				audio = new Audio(url); 
+				
+				audio.play();	
+			}
+		</script>
+	</head>
+	
+	<body>
+		<a href="#ring1"><img class="ring" id="ring1" onclick="play('01.wav');">1</img></a>
+		<a href="#ring2"><img class="ring" id="ring2" onclick="play('02.wav');">2</img></a>
+		<a href="#ring3"><img class="ring" id="ring3" onclick="play('03.wav');">3</img></a>
+		<a href="#ring4"><img class="ring" id="ring4" onclick="play('04.wav');">4</img></a>
+		<a href="#ring5"><img class="ring" id="ring5" onclick="play('05.wav');">5</img></a>
+	</body>
+</html>
