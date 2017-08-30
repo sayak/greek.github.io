@@ -5,26 +5,42 @@
 		
 		<style type="text/css" media="screen">
 		
-			* {
+			* 
+			{
 				-webkit-tap-highlight-color: transparent;
+			}
+			
+			body { width: auto; }
+			
+			#ships
+			{
+				white-space: nowrap;
+			}
+			
+			a {
+				line-height: 225px;
+				background: yellow;
 			}
 			
 			.ring
 			{
-				display: inline-block;
-				width: 100px;
-				height: 50px;
+				isplay: inline-block;
+				
+				width: 150px;
+				height: 100px;
 				background: red;
-				border-radius: 100px / 50px;
+				border-radius: 150px / 100px;
 				
-				transition-duration: 0.5s;
-				
+				transition-duration: 0.2s;
+
+				vertical-align: middle;				
 			}
 			
 			.ring:target 
 			{
-				width: 150px;
-				height: 75px;
+				width: 225px;
+				height: 150px;
+				border-radius: 225px / 150px;
 			}	
 		</style>
 		
@@ -44,10 +60,19 @@
 	</head>
 	
 	<body>
-		<a href="#ring1"><img class="ring" id="ring1" onclick="play('01.wav');">1</img></a>
-		<a href="#ring2"><img class="ring" id="ring2" onclick="play('02.wav');">2</img></a>
-		<a href="#ring3"><img class="ring" id="ring3" onclick="play('03.wav');">3</img></a>
-		<a href="#ring4"><img class="ring" id="ring4" onclick="play('04.wav');">4</img></a>
-		<a href="#ring5"><img class="ring" id="ring5" onclick="play('05.wav');">5</img></a>
+		<div id="ships">
+			<a href="#ring1"><img class="ring" id="ring1" src="01.jpg" onclick="play('01.wav');">1</img></a>
+			<a href="#ring2"><img class="ring" id="ring2" src="02.jpg" onclick="play('02.wav');">2</img></a>
+			<a href="#ring3"><img class="ring" id="ring3" src="03.jpg" onclick="play('03.wav');">3</img></a>
+			<a href="#ring4"><img class="ring" id="ring4" src="04.jpg" onclick="play('04.wav');">4</img></a>
+			<a href="#ring5"><img class="ring" id="ring5" src="05.gif" onclick="play('05.wav');">5</img></a>
+			<a href="#ring6"><img class="ring" id="ring6" src="06.jpg" onclick="play('06.wav');">6</img></a>
+			<a href="#ring7"><img class="ring" id="ring7" src="07.gif" onclick="play('07.wav');">7</img></a>
+			<a href="#ring8"><img class="ring" id="ring8" src="08.jpg" onclick="play('08.wav');">8</img></a>
+			<a href="#ring9"><img class="ring" id="ring9" src="09.jpg" onclick="play('09.wav');">9</img></a>
+			<a href="#ring10"><img class="ring" id="ring10" src="10.gif" onclick="play('10.wav');">10</img></a>
+			<a href="#ring11"><img class="ring" id="ring11" src="11.gif" onclick="play('11.wav');">11</img></a>
+			<a href="#ring12"><img class="ring" id="ring12" src="12.jpg" onclick="play('12.wav');">12</img></a>
+		</div>	
 	</body>
 </html>
