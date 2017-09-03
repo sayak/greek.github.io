@@ -65,10 +65,11 @@
 							
 							var audio = document.createElement("audio");
 							audio.id = n + ".mp3";
-							audio.src= n + ".mp3";
+							audio.src = n + ".mp3";
+							audio.type = "audio/mpeg"; 
 							audio.preload="true";
 							
-							parent.appendChild(audio);
+							sounds.appendChild(audio);
 						}
 						
 						
