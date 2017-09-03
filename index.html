@@ -51,7 +51,8 @@
 			    if (this.readyState == 4) 
 			    {
 			        var ships = JSON.parse(this.responseText);
-					for (var i = 0; i < ships.length; i++) 
+			        
+					for (var i = 0; i < 10; i++) 
 					{
 						var n = i < 9 ? '0' + (i+1) : '' + (i+1);
 
@@ -61,8 +62,8 @@
 						image.innerHTML = '<a href="#ring' + n + '"><span class="ring" id="ring' + n + '"><img src="' + n + '.gif" onclick="play2(\'' + n + '.mp3' + '\');"/><h2>' + (i+1) + '</h2><h3>' + ships[i].greek + '</h3></span></a>'
 						parent.appendChild(image);
 					}			        
-					
-					for (var j = 0; j < ships.length; j++) 
+
+					for (var j = 0; j < 10; j++) 
 					{
 						var n = j < 9 ? '0' + (j+1) : '' + (j+1);
 
@@ -72,12 +73,44 @@
 						audio.id = n + ".mp3";
 						audio.src= n + ".mp3";
 						audio.preload="true";
+						
 						parent.appendChild(audio);
+						
 					}
+	
+					setTimeout( function() {
+						for (var i = 10; i < ships.length; i++) 
+						{
+							var n = i < 9 ? '0' + (i+1) : '' + (i+1);
+	
+							var parent = document.getElementById("ships");
+							
+							var image = document.createElement("span");
+							image.innerHTML = '<a href="#ring' + n + '"><span class="ring" id="ring' + n + '"><img src="' + n + '.gif" onclick="play2(\'' + n + '.mp3' + '\');"/><h2>' + (i+1) + '</h2><h3>' + ships[i].greek + '</h3></span></a>'
+							parent.appendChild(image);
+						}	
+						
+																
+						for (var j = 10; j < ships.length; j++) 
+						{
+							var n = j < 9 ? '0' + (j+1) : '' + (j+1);
+	
+							var parent = document.getElementById("sounds");
+							
+							var audio = document.createElement("audio");
+							audio.id = n + ".mp3";
+							audio.src= n + ".mp3";
+							audio.preload="true";
+							
+							parent.appendChild(audio);
+							
+						}
+					}, 1000);
+
 			    }
 			};
 			
-			req.open("GET", "ships.json", true);
+			req.open("GET", "ships.json");
 			req.send();
 		
 		</script>		
