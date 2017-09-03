@@ -57,16 +57,23 @@
 
 						var parent = document.getElementById("ships");
 						
+						var image = document.createElement("span");
+						image.innerHTML = '<a href="#ring' + n + '"><span class="ring" id="ring' + n + '"><img src="' + n + '.gif" onclick="play2(\'' + n + '.mp3' + '\');"/><h2>' + (i+1) + '</h2><h3>' + ships[i].greek + '</h3></span></a>'
+						parent.appendChild(image);
+					}			        
+					
+					for (var j = 0; j < ships.length; j++) 
+					{
+						var n = j < 9 ? '0' + (j+1) : '' + (j+1);
+
+						var parent = document.getElementById("sounds");
+						
 						var audio = document.createElement("audio");
 						audio.id = n + ".mp3";
 						audio.src= n + ".mp3";
 						audio.preload="true";
 						parent.appendChild(audio);
-						
-						var image = document.createElement("span");
-						image.innerHTML = '<a href="#ring' + n + '"><span class="ring" id="ring' + n + '"><img src="' + n + '.gif" onclick="play2(\'' + n + '.mp3' + '\');"/><h2>' + (i+1) + '</h2><h3>' + ships[i].greek + '</h3></span></a>'
-						parent.appendChild(image);
-					}			        
+					}
 			    }
 			};
 			
@@ -172,7 +179,9 @@
 <!--
 			<a href="#ring1"><span class="ring" id="ring1"><img src="01.jpg" onclick="play2('01.mp3');"/><h2>1</h2><h3>ἔαρ</h3></span></a>
 -->
-		</div>	
+		</div>
 		
+		<div id="sounds">	
+		</div>
 	</body>
 </html>
