@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta charset="UTF-8">
+		
 		<title>Greek</title>
 
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.js"></script>
 		
 		<script>
 			var audio;
@@ -39,6 +42,38 @@
 				active.play();
 			}
 		</script>
+
+		<script>
+			
+			var req = new XMLHttpRequest();
+			
+			req.onreadystatechange = function() {
+			    if (this.readyState == 4) 
+			    {
+			        var ships = JSON.parse(this.responseText);
+					for (var i = 0; i < ships.length; i++) 
+					{
+						var n = i < 9 ? '0' + (i+1) : '' + (i+1);
+
+						var parent = document.getElementById("ships");
+						
+						var audio = document.createElement("audio");
+						audio.id = n + ".mp3";
+						audio.src= n + ".mp3";
+						audio.preload="true";
+						parent.appendChild(audio);
+						
+						var image = document.createElement("span");
+						image.innerHTML = '<a href="#ring' + n + '"><span class="ring" id="ring' + n + '"><img src="' + n + '.gif" onclick="play2(\'' + n + '.mp3' + '\');"/><h2>' + (i+1) + '</h2><h3>' + ships[i].greek + '</h3></span></a>'
+						parent.appendChild(image);
+					}			        
+			    }
+			};
+			
+			req.open("GET", "ships.json", true);
+			req.send();
+		
+		</script>		
 		
 		<meta name="viewport" content="height=device-height">
 		
@@ -134,31 +169,10 @@
 	
 	<body>
 		<div id="ships">
+<!--
 			<a href="#ring1"><span class="ring" id="ring1"><img src="01.jpg" onclick="play2('01.mp3');"/><h2>1</h2><h3>ἔαρ</h3></span></a>
-			<a href="#ring2"><span class="ring" id="ring2"><img src="02.gif" onclick="play2('02.mp3');"/><h2>2</h2><h3>οὖρον, ἐσθλὸνἑταῖρος</h3></span></a>
-			<a href="#ring3"><span class="ring" id="ring3"><img src="03.gif" onclick="play2('03.mp3');"/><h2>3</h2><h3>μάλ' αἴθρη πέπταται ἀννέφελος, λευκὴ δ' ἐπιδέδρομεν αἴγλη</h3></span></a>
-			<a href="#ring4"><span class="ring" id="ring4"><img src="04.jpg" onclick="play2('04.mp3');"/><h2>4</h2><h3>ἐπ΄ εὐτυχίαισιν</h3></span></a>
-			<a href="#ring5"><span class="ring" id="ring5"><img src="05.gif" onclick="play2('05.mp3');"/><h2>5</h2><h3>τοῖς ἄστροις ἐκμετρεῖσθαι</h3></span></a>
-			<a href="#ring6"><span class="ring" id="ring6"><img src="06.jpg" onclick="play2('06.mp3');"/><h2>6</h2></span></a>
-			<a href="#ring7"><span class="ring" id="ring7"><img src="07.gif" onclick="play2('07.mp3');"/><h2>7</h2></span></a>
-			<a href="#ring8"><span class="ring" id="ring8"><img src="08.jpg" onclick="play2('08.mp3');"/><h2>8</h2></span></a>
-			<a href="#ring9"><span class="ring" id="ring9"><img src="09.jpg" onclick="play2('09.mp3');"/><h2>9</h2></span></a>
-			<a href="#ring10"><span class="ring" id="ring10"><img src="10.jpg" onclick="play2('10.mp3');"/><h2>10</h2></span></a>
-			<a href="#ring11"><span class="ring" id="ring11"><img src="11.gif" onclick="play2('11.mp3');"/><h2>11</h2></span></a>
-			<a href="#ring12"><span class="ring" id="ring12"><img src="12.gif" onclick="play2('12.mp3');"/><h2>12</h2></span></a>
+-->
 		</div>	
 		
-		<audio id="01.mp3" src="01.mp3" preload="true"></audio>
-		<audio id="02.mp3" src="02.mp3" preload="true"></audio>
-		<audio id="03.mp3" src="03.mp3" preload="true"></audio>
-		<audio id="04.mp3" src="04.mp3" preload="true"></audio>
-		<audio id="05.mp3" src="05.mp3" preload="true"></audio>
-		<audio id="06.mp3" src="06.mp3" preload="true"></audio>
-		<audio id="07.mp3" src="07.mp3" preload="true"></audio>
-		<audio id="08.mp3" src="08.mp3" preload="true"></audio>
-		<audio id="09.mp3" src="09.mp3" preload="true"></audio>
-		<audio id="10.mp3" src="10.mp3" preload="true"></audio>
-		<audio id="11.mp3" src="11.mp3" preload="true"></audio>
-		<audio id="12.mp3" src="12.mp3" preload="true"></audio>
 	</body>
 </html>
