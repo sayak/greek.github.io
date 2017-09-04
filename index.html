@@ -58,14 +58,14 @@
 							var parent = document.getElementById("ships");
 							
 							var image = document.createElement("span");
-							image.innerHTML = '<a href="#ring' + n + '"><span class="ring" id="ring' + n + '"><img src="' + n + '.gif" onclick="play2(\'' + n + '.mp3' + '\');"/><h2>' + (i+1) + '</h2><h3>' + ships[i].greek + '</h3></span></a>'
+							image.innerHTML = '<a href="#ring' + n + '"><span class="ring" id="ring' + n + '"><img src="' + ships[i].image + '" onclick="play2(\'' + n + '\');"/><h2>' + (i+1) + '</h2><h3>' + ships[i].greek + '</h3></span></a>'
 							parent.appendChild(image);
 																
 							var sounds = document.getElementById("sounds");
 							
 							var audio = document.createElement("audio");
-							audio.id = n + ".mp3";
-							audio.src = n + ".mp3";
+							audio.id = n;
+							audio.src = ships[i].sound;
 							audio.type = "audio/mpeg"; 
 							audio.preload="true";
 							
