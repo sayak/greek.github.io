@@ -24,11 +24,11 @@
 				}
 			}	
 					
-			function play(id) 
+			function play(mp3) 
 			{
 				pause();
 				
-				audio = new Audio(id+".mp3"); 
+				audio = new Audio(mp3); 
 				
 				audio.play();	
 			}
@@ -60,7 +60,7 @@
 								var parent = document.getElementById("ships");
 								
 								var image = document.createElement("span");
-								image.innerHTML = '<a href="#ring' + n + '"><span class="ring" id="ring' + n + '"><img src="' + ships[i].image + '" onclick="play(\'' + n + '\');"/><h2>' + (i+1) + '</h2><h3>' + ships[i].greek + '</h3></span></a>'
+								image.innerHTML = '<a href="#ring' + n + '"><span class="ring" id="ring' + n + '"><img src="' + ships[i].image + '" onclick="play(\'' + ships[i].sound + '\');"/><h2>' + (i+1) + '</h2><h3>' + ships[i].greek + '</h3></span></a>'
 								parent.appendChild(image);
 																	
 /*
@@ -82,8 +82,7 @@
 							
 						}
 						
-						generate(JSON.parse(this.responseText), 0, 70);
-	
+						generate(JSON.parse(this.responseText), 0, 70);	
 				    }
 				};
 				
@@ -102,6 +101,11 @@
 				-webkit-tap-highlight-color: transparent;
 			}
 			
+			html, body
+			{
+				overflow-x: hidden;	
+			}
+			
 			#logo 
 			{
 				margin-top: 20px;
@@ -116,8 +120,9 @@
 				top: 0;
   						  				
   				text-align: center;
- 				
- 				z-index: -1;
+
+				z-index: 1;
+				pointer-events: none;
 			}
 			
 			h1
@@ -152,10 +157,11 @@
 				
 				background: white;
 				
- 				margin-top: 40%; 
+ 				padding-top: 30%; 
 				
 				white-space: nowrap;
 				
+				tabindex: -1;
 			}
 			
 			#ships > span 
@@ -251,7 +257,7 @@
 		
 			<h1>νεῶν κατάλογος</h1>
 			<div id="subheader">KUĢU SARAKSTS  /  CATALOGUE OF SHIPS  /  СПИСОК КОРАБЛЕЙ</div>
-			<div>Annas Faniginas izstāde no 2017. gada 7.septembra līdz 3.oktobrim</div>
+			<div>Annas Faniginas izstāde no 2017. gada 7. septembra līdz 3. oktobrim</div>
 			<div>Eiropas Savienības Māja, Aspazijas bulv. 28</div>
 		</div>
 		
