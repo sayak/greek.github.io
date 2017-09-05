@@ -97,16 +97,17 @@
 				-webkit-tap-highlight-color: transparent;
 			}
 			
+			html, body {
+				min-width: 100%;
+			    max-width: 100%;
+			    overflow-x: hidden;
+			}
+			
 			#header
 			{
-				position: fixed;
 				top: 0;
-				left: 50%;
-				transform: translateX(-50%);
-				
+
 				text-align: center;
-				
-				z-index: -1;
 			}
 			
 			h1
@@ -125,14 +126,17 @@
 			
 			#header div
 			{
-				font: 16px sans-serif;
+				font: 16px/22px sans-serif;
 				
 				white-space: nowrap;
 			}
 			
 			#ships
 			{
-				margin-top: 40vh;
+				min-width: 100%;
+				max-width: 100%;
+				overflow-x: scroll;
+				padding-top: 40vh;
 				white-space: nowrap;
 			}
 			
@@ -220,11 +224,11 @@
 			<div>Eiropas Savienības Māja, Aspazijas bulv. 28</div>
 		</div>
 		
-		<section id="ships">
+		<div id="ships">
 <!--
 			<a href="#ring1"><span class="ring" id="ring1"><img src="01.jpg" onclick="play2('01.mp3');"/><h2>1</h2><h3>ἔαρ</h3></span></a>
 -->
-		</section>
+		</div>
 		
 		<div id="sounds">	
 		</div>
