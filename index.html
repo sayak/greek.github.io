@@ -69,7 +69,7 @@
 								audio.id = n;
 								audio.src = ships[i].sound;
 								audio.type = "audio/mpeg"; 
-								audio.preload="true";
+								audio.preload="false";
 								
 								sounds.appendChild(audio);
 							}
@@ -98,6 +98,11 @@
 				padding: 0;
 				
 				-webkit-tap-highlight-color: transparent;
+			}
+			
+			#logo 
+			{
+				margin-top: 20px;
 			}
 			
 			#header
@@ -198,7 +203,7 @@
 				padding: 2px;
 				
 				width: 180px;
-				font: 14px sans-serif;
+				font: 14px serif;
 				color: grey;
 				white-space: pre-wrap;
 				text-align: center;
@@ -208,7 +213,7 @@
 			{
 				width: 540px;
 				margin-top: 25px;
-				font: 36px sans-serif;
+				font: 36px serif;
 			}
 			
 			.ring img
@@ -238,7 +243,10 @@
 	</head>
 	
 	<body>
+		
 		<div id="header">
+			<img id="logo" src="VERBA-LOGO.jpg" scale="0">
+		
 			<h1>νεῶν κατάλογος</h1>
 			<div id="subheader">KUĢU SARAKSTS  /  CATALOGUE OF SHIPS  /  СПИСОК КОРАБЛЕЙ</div>
 			<div>Annas Faniginas izstāde no 2017. gada 7.septembra līdz 3.oktobrim</div>
