@@ -98,16 +98,21 @@
 			}
 			
 			html, body {
-				min-width: 100%;
-			    max-width: 100%;
-			    overflow-x: hidden;
 			}
 			
 			#header
 			{
-				top: 0;
+				position: fixed;
 
-				text-align: center;
+				height: 20%;
+				
+				top: 0;
+				left: 50%;
+				transform: translateX(-50%);
+  						  				
+  				text-align: center;
+ 				
+ 				z-index: -1;
 			}
 			
 			h1
@@ -133,14 +138,14 @@
 			
 			#ships
 			{
-				position: absolute;
-				min-width: 100%;
-				max-width: 100%;
-				overflow-x: scroll;
-				margin-top: 40vh;
-				white-space: nowrap;
+				background: white;
 				
-				-webkit-overflow-scrolling: touch;
+				height: 40%;
+				
+				margin-top: 20%;
+				padding-top: 20%;
+				
+				white-space: nowrap;
 			}
 			
 			a 
