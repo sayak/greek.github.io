@@ -45,47 +45,49 @@
 
 		<script>
 			
-			var req = new XMLHttpRequest();
-			
-			req.onreadystatechange = function() {
-			    if (this.readyState == 4) 
-			    {
-					var generate = function(ships, offset, count) {						
-						for (var i = offset; i < offset+count; i++) 
-						{
-							var n = i < 9 ? '0' + (i+1) : '' + (i+1);
-	
-							var parent = document.getElementById("ships");
+			window.onload = function()
+			{
+				var req = new XMLHttpRequest();
+				
+				req.onreadystatechange = function() {
+				    if (this.readyState == 4) 
+				    {
+						var generate = function(ships, offset, count) {						
+							for (var i = offset; i < offset+count; i++) 
+							{
+								var n = i < 9 ? '0' + (i+1) : '' + (i+1);
+		
+								var parent = document.getElementById("ships");
+								
+								var image = document.createElement("span");
+								image.innerHTML = '<a href="#ring' + n + '"><span class="ring" id="ring' + n + '"><img src="' + ships[i].image + '" onclick="play2(\'' + n + '\');"/><h2>' + (i+1) + '</h2><h3>' + ships[i].greek + '</h3></span></a>'
+								parent.appendChild(image);
+																	
+								var sounds = document.getElementById("sounds");
+								
+								var audio = document.createElement("audio");
+								audio.id = n;
+								audio.src = ships[i].sound;
+								audio.type = "audio/mpeg"; 
+								audio.preload="true";
+								
+								sounds.appendChild(audio);
+							}
 							
-							var image = document.createElement("span");
-							image.innerHTML = '<a href="#ring' + n + '"><span class="ring" id="ring' + n + '"><img src="' + ships[i].image + '" onclick="play2(\'' + n + '\');"/><h2>' + (i+1) + '</h2><h3>' + ships[i].greek + '</h3></span></a>'
-							parent.appendChild(image);
-																
-							var sounds = document.getElementById("sounds");
 							
-							var audio = document.createElement("audio");
-							audio.id = n;
-							audio.src = ships[i].sound;
-							audio.type = "audio/mpeg"; 
-							audio.preload="true";
+							if (offset + count < ships.length)
+								setTimeout( function() { generate(ships, offset + count, count); }, 1000);
 							
-							sounds.appendChild(audio);
 						}
 						
-						
-						if (offset + count < ships.length)
-							setTimeout( function() { generate(ships, offset + count, count); }, 1000);
-						
-					}
-					
-					generate(JSON.parse(this.responseText), 0, 5);
-
-			    }
-			};
-			
-			req.open("GET", "ships.json");
-			req.send();
-		
+						generate(JSON.parse(this.responseText), 0, 5);
+	
+				    }
+				};
+				
+				req.open("GET", "ships.json");
+				req.send();
+			}
 		</script>		
 		
 		<style type="text/css" media="screen">
@@ -93,6 +95,33 @@
 			* 
 			{
 				-webkit-tap-highlight-color: transparent;
+			}
+			
+			#header
+			{
+				position: fixed;
+				top: 0;
+				left: 50%;
+				transform: translateX(-50%);
+				
+				text-align: center;
+			}
+			
+			h1
+			{
+				margin: 20px 20px;
+				font: 64px serif;
+			}
+			
+			#subheader 
+			{
+				margin: 20px 20px;
+				font: 20px sans-serif;
+			}
+			
+			#header div
+			{
+				font: 16px sans-serif;
 			}
 			
 			#ships
@@ -178,11 +207,18 @@
 	</head>
 	
 	<body>
-		<div id="ships">
+		<div id="header">
+			<h1>νεῶν κατάλογος</h1>
+			<div id="subheader">KUĢU SARAKSTS  /  CATALOGUE OF SHIPS  /  СПИСОК КОРАБЛЕЙ</div>
+			<div>Annas Faniginas izstāde no 2017. gada 7.septembra līdz 3.oktobrim</div>
+			<div>Eiropas Savienības Māja, Aspazijas bulv. 28</div>
+		</div>
+		
+		<section id="ships">
 <!--
 			<a href="#ring1"><span class="ring" id="ring1"><img src="01.jpg" onclick="play2('01.mp3');"/><h2>1</h2><h3>ἔαρ</h3></span></a>
 -->
-		</div>
+		</section>
 		
 		<div id="sounds">	
 		</div>
