@@ -24,11 +24,11 @@
 				}
 			}	
 					
-			function play(url) 
+			function play(id) 
 			{
 				pause();
 				
-				audio = new Audio(url); 
+				audio = new Audio(id+".mp3"); 
 				
 				audio.play();	
 			}
@@ -60,9 +60,10 @@
 								var parent = document.getElementById("ships");
 								
 								var image = document.createElement("span");
-								image.innerHTML = '<a href="#ring' + n + '"><span class="ring" id="ring' + n + '"><img src="' + ships[i].image + '" onclick="play2(\'' + n + '\');"/><h2>' + (i+1) + '</h2><h3>' + ships[i].greek + '</h3></span></a>'
+								image.innerHTML = '<a href="#ring' + n + '"><span class="ring" id="ring' + n + '"><img src="' + ships[i].image + '" onclick="play(\'' + n + '\');"/><h2>' + (i+1) + '</h2><h3>' + ships[i].greek + '</h3></span></a>'
 								parent.appendChild(image);
 																	
+/*
 								var sounds = document.getElementById("sounds");
 								
 								var audio = document.createElement("audio");
@@ -72,6 +73,7 @@
 								audio.preload="false";
 								
 								sounds.appendChild(audio);
+*/
 							}
 							
 							
@@ -80,7 +82,7 @@
 							
 						}
 						
-						generate(JSON.parse(this.responseText), 0, 5);
+						generate(JSON.parse(this.responseText), 0, 70);
 	
 				    }
 				};
@@ -255,11 +257,11 @@
 		
 		<div id="ships">
 <!--
-			<a href="#ring1"><span class="ring" id="ring1"><img src="01.jpg" onclick="play2('01.mp3');"/><h2>1</h2><h3>ἔαρ</h3></span></a>
+			<span><a href="#ring1"><span class="ring" id="ring1"><img src="01.jpg" onclick="play('01');"/><h2>1</h2><h3>ἔαρ</h3></span></a></span>
 -->
 		</div>
 		
-		<div id="sounds">	
+<!-- 		<div id="sounds">	 -->
 		</div>
 	</body>
 </html>
