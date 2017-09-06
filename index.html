@@ -44,7 +44,6 @@
 		</script>
 
 		<script>
-			
 			window.onload = function()
 			{
 				var req = new XMLHttpRequest();
@@ -60,7 +59,7 @@
 								var parent = document.getElementById("ships");
 								
 								var image = document.createElement("span");
-								image.innerHTML = '<a href="#ring' + n + '"><span class="ring" id="ring' + n + '"><img src="' + ships[i].image + '" onclick="play(\'' + ships[i].sound + '\');"/><h2>' + (i+1) + '</h2><h3>' + ships[i].greek + '</h3></span></a>'
+								image.innerHTML = '<a href="#ring' + n + '"><span class="ring" id="ring' + n + '"><img src="' + ships[i].image + '" onclick="var x = this.parentNode; setTimeout( function() { x.scrollIntoView(false); play(\'' + ships[i].sound + '\'); }, 50);" onerror="this.src=\'grey.png\'"/><h2>' + (i+1) + '</h2><h3>' + ships[i].greek + '</h3></span></a>'
 								parent.appendChild(image);
 																	
 /*
@@ -82,7 +81,8 @@
 							
 						}
 						
-						generate(JSON.parse(this.responseText), 0, 70);	
+						generate(JSON.parse(this.responseText), 0, 70);
+
 				    }
 				};
 				
@@ -109,6 +109,8 @@
 			#logo 
 			{
 				margin-top: 20px;
+				z-index: 2;
+				pointer-events: auto;
 			}
 			
 			#header
@@ -129,12 +131,14 @@
 			{
 				margin: 20px 20px;
 				font: 64px serif;
+				color: dimgrey;				
 			}
 			
-			#subheader 
+			#header #subheader 
 			{
 				margin: 20px 20px;
 				font: 22px sans-serif;
+				color: grey;
 				
 				white-space: nowrap;
 			}
@@ -142,6 +146,7 @@
 			#header div
 			{
 				font: 18px/22px sans-serif;
+				color: grey;
 				
 				white-space: nowrap;
 			}
@@ -157,7 +162,7 @@
 				
 				background: white;
 				
- 				padding-top: 30%; 
+ 				padding-top: 400px; 
 				
 				white-space: nowrap;
 				
@@ -221,6 +226,7 @@
 			{
 				width: 540px;
 				margin-top: 25px;
+				margin-bottom: 15px;
 				font: 36px serif;
 			}
 			
@@ -251,10 +257,9 @@
 	</head>
 	
 	<body>
-		
 		<div id="header">
-			<img id="logo" src="VERBA-LOGO.jpg" scale="0">
-		
+			<a href="http://www.verba.lv"><img id="logo" src="VERBA-LOGO.jpg" scale="0"></a>
+
 			<h1>νεῶν κατάλογος</h1>
 			<div id="subheader">KUĢU SARAKSTS  /  CATALOGUE OF SHIPS  /  СПИСОК КОРАБЛЕЙ</div>
 			<div>Annas Faniginas izstāde no 2017. gada 7. septembra līdz 3. oktobrim</div>
